@@ -103,3 +103,31 @@ function asNumber(val: number | string): number{
 }
 
 asNumber(10);
+
+
+interface LightApiResponse {
+    lightSwitchValue: boolean;
+}
+
+function setLightSwitch(value: boolean) {
+    switch (value) {
+    case true:
+    turnLightOn();
+    break;
+    case false:
+     turnLightOff();
+    break;
+    default:
+    console.log(`I'm afraid I can't do that.`);
+    }
+    }
+
+    function turnLightOn(){
+        return 'light On';
+    }
+
+    function turnLightOff(){
+        return 'light off';
+    }
+
+    console.log(setLightSwitch(true));
