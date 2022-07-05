@@ -17,3 +17,42 @@ function calculateArea2(shape) {
     return shape.width * shape.width;
 }
 console.log(calculateArea2({ height: 5, width: 10 }));
+function calculateArea3(shape) {
+    if (shape.kind === 'rectangle') {
+        return shape.width * shape.height;
+    }
+    else if (shape.kind === 'square') {
+        return shape.width * shape.width;
+    }
+}
+console.log(calculateArea3({ width: 10, height: 15, kind: 'rectangle' }));
+class Squares {
+    constructor(width) {
+        this.width = width;
+    }
+}
+class Rectangles extends Squares {
+    constructor(width, height) {
+        super(width);
+        this.width = width;
+        this.height = height;
+    }
+}
+function calculateArea4(shape) {
+    if (shape instanceof Rectangles) {
+        return shape.width * shape.height;
+    }
+    return shape.width * shape.width;
+}
+console.log(calculateArea4({ width: 10 }));
+/* function asNumber(val: number | string): number{
+    return val * val;
+} */
+// function asNumber(val: number): number{
+//     return val * val;
+// }
+// asNumber(10);
+function asNumber(val) {
+    return typeof (val) == 'string' ? Number(val) : val;
+}
+asNumber(10);

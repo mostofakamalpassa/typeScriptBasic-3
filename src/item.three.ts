@@ -32,3 +32,74 @@ function calculateArea2(shape: Shape){
 }
 
 console.log(calculateArea2({height:5, width:10}));
+
+
+interface Square1{
+    kind:'square';
+    width:number;
+}
+
+interface  Rectangle1{
+    kind:'rectangle';
+    width:number;
+    height:number;
+
+}
+
+type Shape1 = Square1 | Rectangle1;
+function calculateArea3(shape: Shape1){
+
+    if(shape.kind === 'rectangle'){
+        return shape.width * shape.height;
+    }
+    else if(shape.kind === 'square'){
+        return shape.width * shape.width;
+    }
+}
+console.log(calculateArea3({width:10, height:15, kind:'rectangle'}));
+
+
+class Squares{
+    constructor(public width:number){
+
+    }
+}
+
+class Rectangles extends Squares {
+    constructor(public width:number, public height:number){
+        super(width);
+    }
+}
+
+type Square2 = Squares | Rectangles;
+
+
+function calculateArea4(shape:Square2){
+
+    if(shape instanceof Rectangles){
+        return shape.width * shape.height;
+    }
+
+    return shape.width * shape.width;
+}
+
+console.log(calculateArea4({width:10}));
+
+
+/* function asNumber(val: number | string): number{
+    return val * val;
+} */
+
+
+// function asNumber(val: number): number{
+//     return val * val;
+// }
+
+// asNumber(10);
+
+
+function asNumber(val: number | string): number{
+    return typeof(val) == 'string' ?  Number(val) : val;
+}
+
+asNumber(10);
