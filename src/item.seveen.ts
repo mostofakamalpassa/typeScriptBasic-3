@@ -88,3 +88,6 @@ const triple: [number, number, number] = [1, 2, 3];
 // '[number, number, number]' is not assignable to '[number, number]'
 // Types of property 'length' are incompatible
 // Type '3' is not assignable to type '2'
+
+type T = Exclude<string|Date, string|number>; // Type is Date
+type NonZeroNums = Exclude<number, 0>; // Type is still just number
